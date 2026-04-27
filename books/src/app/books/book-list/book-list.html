@@ -1,1 +1,28 @@
-<p>book-list works!</p>
+@if (books.length < 10) {
+  <p>Es sind nur {{ books.length }} Bücher vorhanden.</p>
+}
+
+<br />
+
+<table>
+  <tr>
+    <td>ISBN</td>
+    <td>Name</td>
+    <td>Price</td>
+    <td>Rating</td>
+    <td></td>
+  </tr>
+
+  <!-- *ngFor="let book of books"  -->
+  @for (book of books; track book.isbn) {
+    <tr>
+      <td>{{ book.isbn }}</td>
+      <td>{{ book.name }}</td>
+      <td>{{ book.price }}</td>
+      <td>{{ book.rating }}</td>
+      <td>
+        <img [style.width.px]="breite" [src]="book.coverUrl" alt="Cover von {{ book.name }}" />
+      </td>
+    </tr>
+  }
+</table>
