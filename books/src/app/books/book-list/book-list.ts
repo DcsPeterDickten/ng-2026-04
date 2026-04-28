@@ -4,6 +4,7 @@ import { FormsModule } from '@angular/forms';
 import { Book } from '../book';
 import { BookFilterPipe } from '../book-filter-pipe';
 import { Rating } from '../../shared/rating/rating';
+import { BookData } from '../book-data';
 
 @Component({
   selector: 'book-list',
@@ -14,52 +15,41 @@ import { Rating } from '../../shared/rating/rating';
 })
 export class BookList implements OnInit, OnChanges, OnDestroy {
   public breite = 70;
-  public books: Array<Book> = [
-    {
-      name: 'Angular 18 for Beginners',
-      isbn: '1234567890',
-      price: 10.99,
-      rating: 3.5,
-      coverUrl: 'https://m.media-amazon.com/images/I/71Wv+d6oP6L._SY522_.jpg',
-    },
-    {
-      name: 'Angular 20 for Freaks',
-      isbn: '1234567891',
-      price: 12.99,
-      rating: 3.6,
-      coverUrl: 'https://m.media-amazon.com/images/I/61IEJY3sWWL._AC_UY436_QL65_.jpg',
-    },
-    {
-      name: 'Angular 22 for Nerds',
-      isbn: '1234567892',
-      price: 14.99,
-      rating: 3.9,
-      coverUrl: 'https://m.media-amazon.com/images/I/71le4bCnY1L._AC_UY436_QL65_.jpg',
-    },
-  ];
+  public books: Array<Book> = [];
   public coverIsVisible = true;
   public searchValue: string = '';
 
-  constructor() {
+  constructor(private bookData: BookData) {
     console.log('BookList constructor');
   }
 
   ngOnInit(): void {
     console.log('BookList ngOnInit');
+    this.books = this.bookData.getBooks();
   }
+
   ngOnChanges(changes: { [propName: string]: SimpleChange<any> }): void {
     console.log('BookList ngOnChanges', changes);
   }
+
   ngOnDestroy(): void {
     console.log('BookList ngOnDestroy');
   }
 
-  upVote($event: string) {
-    console.log('BookList.upVote', $event);
+  upVote(isbn: string) {
+    console.log('BookList.upVote', isbn);
+    const book = this.books.find((book) => book.isbn === isbn);
+    if (book) {
+      book.rating = +Math.min(5, book.rating + 0.1).toFixed(1);
+    }
   }
 
-  downVote($event: string) {
-    console.log('BookList.downVote', $event);
+  downVote(isbn: string) {
+    console.log('BookList.downVote', isbn);
+    const book = this.books.find((book) => book.isbn === isbn);
+    if (book) {
+      book.rating = +Math.max(1, book.rating - 0.1).toFixed(1);
+    }
   }
 
   toggleCover() {

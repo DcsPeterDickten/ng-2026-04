@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnChanges, Output, SimpleChange } from '@angular/core';
 
 @Component({
   selector: 'rating',
@@ -6,7 +6,7 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   templateUrl: './rating.html',
   styleUrl: './rating.css',
 })
-export class Rating {
+export class Rating implements OnChanges{
   @Input()
   id : string = '?'
 
@@ -18,6 +18,11 @@ export class Rating {
 
   @Output()
   downVote : EventEmitter<string> = new EventEmitter<string>();
+
+  ngOnChanges(changes: { [propName: string]: SimpleChange<any>; }): void {
+    console.log('Rating ngOnChanges', this.id, changes);
+  }
+
 
   plus() {
     console.log('Rating.plus', this.id);
