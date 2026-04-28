@@ -2,7 +2,18 @@
   <p>Es sind nur {{ books.length }} Bücher vorhanden.</p>
 }
 
+<p>
+Filter:
+<input type="text" [(ngModel)]="searchValue" />
+</p>
+
+<button (click)="toggleCover()">Cover {{coverIsVisible ? 'aus':'ein'}}blenden</button>
+
 <br />
+
+<p>
+  Liste gefiltert nach: {{ searchValue }}
+</p>
 
 <table>
   <tr>
@@ -15,13 +26,15 @@
 
   <!-- *ngFor="let book of books"  -->
   @for (book of books; track book.isbn) {
-    <tr>
+    <tr style="height: 120px;">
       <td>{{ book.isbn }}</td>
       <td>{{ book.name }}</td>
       <td>{{ book.price }}</td>
       <td>{{ book.rating }}</td>
       <td>
-        <img [style.width.px]="breite" [src]="book.coverUrl" alt="Cover von {{ book.name }}" />
+        @if (coverIsVisible) {
+          <img [style.width.px]="breite" [src]="book.coverUrl" alt="Cover von {{ book.name }}" />
+        }
       </td>
     </tr>
   }
