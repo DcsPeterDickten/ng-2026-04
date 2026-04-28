@@ -1,7 +1,22 @@
-<nav>
-<a routerLink="/welcome">Willkommen</a>
-<a routerLink="/books">Bücher</a>
-<a routerLink="/calculator">Taschenrechner</a>
-</nav>
-<br/>
-<router-outlet />
+<mat-toolbar color="primary">
+  <mat-icon>menu_book</mat-icon>
+  <span class="title">{{ name }}</span>
+  <nav>
+    <a mat-button routerLink="/welcome" routerLinkActive="active-link">
+      <mat-icon>home</mat-icon>
+      Willkommen
+    </a>
+    <a mat-button routerLink="/books" routerLinkActive="active-link">
+      <mat-icon>library_books</mat-icon>
+      Bücher
+    </a>
+    <a mat-button routerLink="/calculator" routerLinkActive="active-link">
+      <mat-icon>calculate</mat-icon>
+      Taschenrechner
+    </a>
+  </nav>
+</mat-toolbar>
+
+<main class="content">
+  <router-outlet />
+</main>

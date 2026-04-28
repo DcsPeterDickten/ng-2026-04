@@ -1,0 +1,11 @@
+:host {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.rating-value {
+  font-weight: 500;
+  min-width: 28px;
+  text-align: center;
+}

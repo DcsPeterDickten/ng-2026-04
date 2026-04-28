@@ -1,6 +1,12 @@
-import { CurrencyPipe, DecimalPipe } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatCardModule } from '@angular/material/card';
 import { Book } from '../book';
 import { BookFilterPipe } from '../book-filter-pipe';
 import { Rating } from '../../shared/rating/rating';
@@ -8,19 +14,32 @@ import { BookData } from '../book-data';
 
 @Component({
   selector: 'book-list',
-  imports: [FormsModule, CurrencyPipe, DecimalPipe, BookFilterPipe, Rating],
+  imports: [
+    FormsModule,
+    CurrencyPipe,
+    BookFilterPipe,
+    Rating,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    MatCardModule,
+  ],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
-  //encapsulation: ViewEncapsulation.None
 })
 export class BookList implements OnInit, OnChanges, OnDestroy {
   public breite = 70;
   public books: Array<Book> = [];
   public coverIsVisible = true;
   public searchValue: string = '';
+  public displayedColumns = ['isbn', 'name', 'price', 'rating', 'cover'];
 
-  constructor(private bookData: BookData,
-    private changeDetectorRef: ChangeDetectorRef) {
+  constructor(
+    private bookData: BookData,
+    private changeDetectorRef: ChangeDetectorRef,
+  ) {
     console.log('BookList constructor');
   }
 

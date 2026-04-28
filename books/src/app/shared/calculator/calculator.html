@@ -1,20 +1,34 @@
-<div class="calc">
-  <div class="display">{{ result }}</div>
+<mat-card class="calc-card">
+  <mat-card-header>
+    <mat-icon mat-card-avatar>calculate</mat-icon>
+    <mat-card-title>Taschenrechner</mat-card-title>
+  </mat-card-header>
 
-  <div class="inputs">
-    <label>
-      <span>X</span>
-      <input type="number" [(ngModel)]="x" />
-    </label>
-    <label>
-      <span>Y</span>
-      <input type="number" [(ngModel)]="y" />
-    </label>
-  </div>
+  <mat-card-content>
+    <div class="display">{{ result }}</div>
 
-  <div class="buttons">
-    <button class="op" (click)="add()">+</button>
-    <button class="op" (click)="subtract()">&minus;</button>
-    <button class="clear" (click)="clear()">C</button>
-  </div>
-</div>
+    <div class="inputs">
+      <mat-form-field appearance="outline">
+        <mat-label>X</mat-label>
+        <input matInput type="number" [(ngModel)]="x">
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+        <mat-label>Y</mat-label>
+        <input matInput type="number" [(ngModel)]="y">
+      </mat-form-field>
+    </div>
+
+    <div class="buttons">
+      <button mat-raised-button color="primary" (click)="add()">
+        <mat-icon>add</mat-icon> Plus
+      </button>
+      <button mat-raised-button color="accent" (click)="subtract()">
+        <mat-icon>remove</mat-icon> Minus
+      </button>
+      <button mat-raised-button color="warn" (click)="clear()">
+        <mat-icon>clear</mat-icon> Clear
+      </button>
+    </div>
+  </mat-card-content>
+</mat-card>
