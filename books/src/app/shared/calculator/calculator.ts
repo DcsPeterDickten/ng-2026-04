@@ -14,15 +14,15 @@ export class Calculator {
 
   add() {
     this.result = this.x + this.y;
-}
+  }
 
-subtract() {
+  subtract() {
     this.result = this.x - this.y;
-}
+  }
 
-clear() {
+  clear() {
     this.x = 0;
     this.y = 0;
     this.result = 0;
-}
+  }
 }

@@ -1,9 +1,20 @@
-<p>calculator works!</p>
-<p>x: <input type="number" [(ngModel)]="x" /></p>
-<p>y: <input type="number" [(ngModel)]="y" /></p>
-<p>
-  <button (click)="add()">+</button>
-  <button (click)="subtract()">-</button>
-  <button (click)="clear()">C</button>
-</p>
-<p>Result: {{ result }}</p>
+<div class="calc">
+  <div class="display">{{ result }}</div>
+
+  <div class="inputs">
+    <label>
+      <span>X</span>
+      <input type="number" [(ngModel)]="x" />
+    </label>
+    <label>
+      <span>Y</span>
+      <input type="number" [(ngModel)]="y" />
+    </label>
+  </div>
+
+  <div class="buttons">
+    <button class="op" (click)="add()">+</button>
+    <button class="op" (click)="subtract()">&minus;</button>
+    <button class="clear" (click)="clear()">C</button>
+  </div>
+</div>
