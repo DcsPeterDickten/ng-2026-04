@@ -2,10 +2,11 @@ import { CurrencyPipe, DecimalPipe } from '@angular/common';
 import { Component, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Book } from '../book';
+import { BookFilterPipe } from "../book-filter-pipe";
 
 @Component({
   selector: 'book-list',
-  imports: [FormsModule, CurrencyPipe, DecimalPipe],
+  imports: [FormsModule, CurrencyPipe, DecimalPipe, BookFilterPipe],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
   //encapsulation: ViewEncapsulation.None
