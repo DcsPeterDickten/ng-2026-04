@@ -6,23 +6,22 @@ import { Component, EventEmitter, Input, OnChanges, Output, SimpleChange } from 
   templateUrl: './rating.html',
   styleUrl: './rating.css',
 })
-export class Rating implements OnChanges{
+export class Rating implements OnChanges {
   @Input()
-  id : string = '?'
+  id: string = '?';
 
   @Input()
-  stars : number = 0;
+  stars: number = 0;
 
   @Output()
-  upVote : EventEmitter<string> = new EventEmitter<string>();
+  upVote: EventEmitter<string> = new EventEmitter<string>();
 
   @Output()
-  downVote : EventEmitter<string> = new EventEmitter<string>();
+  downVote: EventEmitter<string> = new EventEmitter<string>();
 
-  ngOnChanges(changes: { [propName: string]: SimpleChange<any>; }): void {
+  ngOnChanges(changes: { [propName: string]: SimpleChange<any> }): void {
     console.log('Rating ngOnChanges', this.id, changes);
   }
-
 
   plus() {
     console.log('Rating.plus', this.id);
@@ -33,7 +32,4 @@ export class Rating implements OnChanges{
     console.log('Rating.minus', this.id);
     this.downVote.emit(this.id);
   }
-
-
-
 }

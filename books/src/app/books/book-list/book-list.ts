@@ -1,5 +1,5 @@
-import { CurrencyPipe, DecimalPipe } from '@angular/common';
-import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
+import { CurrencyPipe } from '@angular/common';
+import { ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Book } from '../book';
 import { BookFilterPipe } from '../book-filter-pipe';
@@ -8,10 +8,9 @@ import { BookData } from '../book-data';
 
 @Component({
   selector: 'book-list',
-  imports: [FormsModule, CurrencyPipe, DecimalPipe, BookFilterPipe, Rating],
+  imports: [FormsModule, CurrencyPipe, BookFilterPipe, Rating],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
-  //encapsulation: ViewEncapsulation.None
 })
 export class BookList implements OnInit, OnChanges, OnDestroy {
   public breite = 70;
@@ -19,8 +18,10 @@ export class BookList implements OnInit, OnChanges, OnDestroy {
   public coverIsVisible = true;
   public searchValue: string = '';
 
-  constructor(private bookData: BookData,
-    private changeDetectorRef: ChangeDetectorRef) {
+  constructor(
+    private bookData: BookData,
+    private changeDetectorRef: ChangeDetectorRef,
+  ) {
     console.log('BookList constructor');
   }
 
