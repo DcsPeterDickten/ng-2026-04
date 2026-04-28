@@ -1,5 +1,5 @@
 import { CurrencyPipe, DecimalPipe } from '@angular/common';
-import { Component, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnChanges, OnDestroy, OnInit, SimpleChange } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { Book } from '../book';
 import { BookFilterPipe } from '../book-filter-pipe';
@@ -19,13 +19,16 @@ export class BookList implements OnInit, OnChanges, OnDestroy {
   public coverIsVisible = true;
   public searchValue: string = '';
 
-  constructor(private bookData: BookData) {
+  constructor(private bookData: BookData,
+    private changeDetectorRef: ChangeDetectorRef) {
     console.log('BookList constructor');
   }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     console.log('BookList ngOnInit');
-    this.books = this.bookData.getBooks();
+    this.books = await this.bookData.getBooks();
+    this.changeDetectorRef.detectChanges();
+    console.log('BookList ngOnInit', this.books);
   }
 
   ngOnChanges(changes: { [propName: string]: SimpleChange<any> }): void {
