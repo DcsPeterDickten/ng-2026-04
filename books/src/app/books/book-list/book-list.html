@@ -2,10 +2,10 @@
   <p>Es sind nur {{ books.length }} Bücher vorhanden.</p>
 }
 
-<p>
+<div>
 Filter:
-<input type="text" [(ngModel)]="searchValue" />
-</p>
+<input type="text" [(ngModel)]="searchValue" required minlength="3"/>
+</div>
 
 <button (click)="toggleCover()">Cover {{coverIsVisible ? 'aus':'ein'}}blenden</button>
 
@@ -29,8 +29,8 @@ Filter:
     <tr style="height: 120px;">
       <td>{{ book.isbn }}</td>
       <td>{{ book.name }}</td>
-      <td>{{ book.price }}</td>
-      <td>{{ book.rating }}</td>
+      <td>{{ book.price | currency:'EUR':'symbol':'1.2-2' }}</td>
+      <td>{{ book.rating| number:'1.1-1' }}</td>
       <td>
         @if (coverIsVisible) {
           <img [style.width.px]="breite" [src]="book.coverUrl" alt="Cover von {{ book.name }}" />
