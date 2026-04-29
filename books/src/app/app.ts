@@ -1,12 +1,10 @@
 import { Component } from '@angular/core';
-import { RouterOutlet, RouterLinkWithHref } from '@angular/router';
-import { BookList } from "./books/book-list/book-list";
-// import { Calculator } from './shared/calculator/calculator';
+import { RouterLinkWithHref, RouterOutlet } from '@angular/router';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, BookList, RouterLinkWithHref], // Calculator
+  imports: [RouterOutlet, RouterLinkWithHref], // Calculator
   templateUrl: './app.html',
   styleUrl: './app.css'
 })

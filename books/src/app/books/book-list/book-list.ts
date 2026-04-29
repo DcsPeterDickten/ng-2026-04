@@ -5,13 +5,12 @@ import { Book } from '../book';
 import { BookFilterPipe } from '../book-filter-pipe';
 import { Rating } from '../../shared/rating/rating';
 import { BookData } from '../book-data';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  selector: 'book-list',
-  imports: [FormsModule, CurrencyPipe, DecimalPipe, BookFilterPipe, Rating],
+  imports: [FormsModule, CurrencyPipe, BookFilterPipe, Rating, RouterLink],
   templateUrl: './book-list.html',
   styleUrl: './book-list.css',
-  //encapsulation: ViewEncapsulation.None
 })
 export class BookList implements OnInit, OnChanges, OnDestroy {
   public breite = 70;

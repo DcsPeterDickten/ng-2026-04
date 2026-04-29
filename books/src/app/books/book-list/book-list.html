@@ -27,7 +27,11 @@ Filter:
   <!-- *ngFor="let book of books"  -->
   @for (book of (books | bookFilter:searchValue); track book.isbn) {
     <tr style="height: 120px;">
-      <td>{{ book.isbn }}</td>
+      <td>
+        <a [routerLink]="['/books', book.isbn]">
+        {{ book.isbn }}
+      </a>
+    </td>
       <td>{{ book.name }}</td>
       <td>{{ book.price | currency:'EUR':'symbol':'1.2-2' }}</td>
       <td><rating

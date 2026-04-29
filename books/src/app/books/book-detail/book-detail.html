@@ -1,0 +1,8 @@
+<p>Alle Details für das Buch mit der ISBN {{ isbn }}</p>
+
+@if (book) {
+  <h1>{{ book.name }}</h1>
+  <img [style.width.px]="50" [src]="book.coverUrl" alt="Cover von {{ book.name }}" />
+  <p>{{ book.price | currency:'EUR':'symbol':'1.2-2' }}</p>
+  <p>{{ book.rating }}</p>
+}
