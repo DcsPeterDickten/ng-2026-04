@@ -59,6 +59,7 @@ export class BookList implements OnInit, OnChanges, OnDestroy {
   }
 
   upVote(isbn: string) {
+    debugger;
     console.log('BookList.upVote', isbn);
     const book = this.books.find((book) => book.isbn === isbn);
     if (book) {
